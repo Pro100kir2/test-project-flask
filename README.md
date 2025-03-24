@@ -40,7 +40,6 @@ URL: /api/register_user
 Пример использования:
 
 """
-
 curl -X POST http://127.0.0.1:5000/api/register_user \
   -H "Content-Type: application/json" \
   -d '{
@@ -50,7 +49,6 @@ curl -X POST http://127.0.0.1:5000/api/register_user \
     "gender": "man",
     "full_name": "LupanovKiri"
   }'
-  
 """
 2. Авторизация пользователя
 URL: /api/login_user
@@ -69,16 +67,13 @@ URL: /api/login_user
   "message": "Login successful!"
 }
 Пример использования:
-
 """
-
 curl -b cookies.txt -X POST http://localhost:5000/api/login_user \
   -H "Content-Type: application/json" \
   -d '{
     "name": "admin",
     "password": "1234"
   }'
-  
 """
 
 3. Получение информации о пользователе
@@ -103,13 +98,9 @@ URL: /api/get_user
   "full_name": "LupanovKiri"
 }
 Пример использования:
-
 """
-
 curl -b cookies.txt http://localhost:5000/api/get_user
-
 """
-
 Сайт
 Регистрация
 Перейдите на страницу /registration.
@@ -139,9 +130,7 @@ curl -b cookies.txt http://localhost:5000/api/get_user
 Тестирование API
 Пример регистрации:
 
-
 """
-
 curl -X POST http://127.0.0.1:5000/api/register_user \
   -H "Content-Type: application/json" \
   -d '{
@@ -151,28 +140,21 @@ curl -X POST http://127.0.0.1:5000/api/register_user \
     "gender": "man",
     "full_name": "LupanovKiri"
   }'
-
 """
-
 Пример авторизации:
 
 """
-
 curl -b cookies.txt -X POST http://localhost:5000/api/login_user \
   -H "Content-Type: application/json" \
   -d '{
     "name": "admin",
     "password": "1234"
   }'
-
 """
 Пример получения данных о пользователе:
 
-
 """
-
 curl -b cookies.txt http://localhost:5000/api/get_user
-
 """
 
 Технологии
@@ -183,20 +165,15 @@ SQLite: База данных для хранения информации о п
 Запуск проекта
 Установите все зависимости:
 
-
 """
-
 pip install -r requirements.txt
-
 """
 
 Запустите приложение:
 
-
 """
-
 python run.py
-
 """
 
 Перейдите по адресу http://127.0.0.1:5000 для доступа к сайту или используйте API для взаимодействия с системой.
+
