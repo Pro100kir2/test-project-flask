@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask App</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #FF7E5F, #FEB47B); /* Градиентный фон */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        h1 {
+            position: absolute;
+            top: 20px; /* Заголовок будет на расстоянии от верхней границы */
+            left: 50%;
+            transform: translateX(-50%); /* Центрируем заголовок */
+            font-size: 48px;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4); /* Тень для заголовка */
+        }
+
+        .container {
+            background: linear-gradient(#FF7E5F, #FEB47B); /* Градиентный фон */
+            border-radius: 12px;
+            padding: 40px;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+            margin-top: 100px; /* Даем отступ сверху для отделения от заголовка */
+        }
+
+        .message {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .unauthorized-message {
+            color: red;
+        }
+
+        /* Обновленный стиль для кнопок (зеленый цвет) */
+        .btn {
+            padding: 12px 25px;
+            background-color: #28a745; /* Зеленый фон */
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px 0;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #218838; /* Тёмно-зеленый при наведении */
+        }
+
+        .btn:focus {
+            outline: none;
+        }
+
+        .btn:active {
+            background-color: #1e7e34; /* Еще темнее при нажатии */
+        }
+
+        .link-container {
+            margin-top: 30px;
+        }
+
+        .link-container a {
+            display: inline-block;
+            margin: 10px 20px;
+            font-size: 16px;
+            color: #E8EFF0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .link-container a:hover {
+            color: #0056b3;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Добро пожаловать в управление пользователями Flask</h1>
+
+    <div class="container">
+        {% if 'user_id' in session %}
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <div class="message">
+                        {% for message in messages %}
+                            <p>{{ message }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+            <div class="button-container">
+                <a href="{{ url_for('user_controller.get_users_page') }}" class="btn">Показать всех пользователей</a>
+                <!-- Кнопка для выхода -->
+                <a href="{{ url_for('user_controller.logout') }}" class="btn">Выйти</a>
+            </div>
+        {% else %}
+        {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <div class="message">
+                        {% for message in messages %}
+                            <p>{{ message }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+            <div class="message unauthorized-message">Вы не авторизованы</div>
+            <div class="link-container">
+                <a href="{{ url_for('user_controller.registration_page') }}" class="btn">Зарегистрироваться</a>
+                <a href="{{ url_for('user_controller.login_page') }}" class="btn">Войти</a>
+            </div>
+            <div class="link-container">
+                <a href="{{ url_for('user_controller.get_users_page') }}" class="btn">Показать всех пользователей</a>
+            </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>

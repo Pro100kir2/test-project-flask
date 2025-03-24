@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Купоны</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Верхняя панель -->
+    <ul class="top-bar">
+        <li><a class="w-uvp-item" href="/guaranty">💰 100% гарантия возврата денег</a></li>
+        <li><a class="w-uvp-item" href="/infographics">🎟 Купили: <span class="count">126 463 050</span> купонов</a></li>
+        <li><a class="w-uvp-item" href="https://partners-kupikupon.ru" target="_blank">🚀 Давайте сделаем акцию!</a></li>
+    </ul>
+
+    <div class="container">
+        <h1>🔥 Горящие купоны</h1>
+
+        <!-- Фильтр -->
+        <div class="filter">
+            <label for="sort">Сортировка:</label>
+            <select id="sort">
+                <option value="popular">Популярность</option>
+                <option value="price_low">Цена (по возрастанию)</option>
+                <option value="price_high">Цена (по убыванию)</option>
+                <option value="discount">Скидка</option>
+            </select>
+        </div>
+
+        <!-- Категории (были в sidebar) -->
+        <div class="categories">
+            <button class="category" data-category="all">Все</button>
+            <button class="category" data-category="food">Еда</button>
+            <button class="category" data-category="beauty">Красота</button>
+            <button class="category" data-category="entertainment">Развлечения</button>
+            <button class="category" data-category="children">Дети</button>
+            <button class="category" data-category="hotels">Отели</button>
+            <button class="category" data-category="tours">Туры</button>
+            <button class="category" data-category="cars">Авто</button>
+            <button class="category" data-category="goods">Товары</button>
+            <button class="category" data-category="services">Услуги</button>
+            <button class="category" data-category="kupikupon">Купикупон</button>
+            <button class="category" data-category="february23">23 февраля</button>
+        </div>
+
+        <!-- Купоны -->
+        <div id="coupons-container" class="coupons-container"></div>
+    </div>
+
+    <script src="js/scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Flask App</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #FF7E5F, #FEB47B); /* Градиентный фон */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        h1 {
+            position: absolute;
+            top: 20px; /* Заголовок будет на расстоянии от верхней границы */
+            left: 50%;
+            transform: translateX(-50%); /* Центрируем заголовок */
+            font-size: 48px;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4); /* Тень для заголовка */
+        }
+
+        .container {
+            background: linear-gradient(#FF7E5F, #FEB47B); /* Градиентный фон */
+            border-radius: 12px;
+            padding: 40px;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+            margin-top: 100px; /* Даем отступ сверху для отделения от заголовка */
+        }
+
+        .message {
+            color: red;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        input[type="text"], input[type="password"], input[type="date"], select {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: normal; /* Убираем жирный шрифт */
+            box-sizing: border-box; /* Учитываем padding в ширине */
+        }
+
+        select {
+            -webkit-appearance: none; /* Для стандартного внешнего вида на MacOS */
+            -moz-appearance: none; /* Для Firefox */
+            appearance: none; /* Для всех других браузеров */
+        }
+
+        /* Обновленный стиль для кнопок */
+        .btn {
+            padding: 12px 25px;
+            background-color: #28a745; /* Зеленый фон */
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px 0;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+
+        .btn:hover {
+            background-color: #218838; /* Тёмно-зеленый при наведении */
+        }
+
+        .btn:focus {
+            outline: none;
+        }
+
+        .btn:active {
+            background-color: #1e7e34; /* Еще темнее при нажатии */
+        }
+
+        /* Стиль для кнопки "Назад" */
+        .back-btn {
+            background-color: #28a745; /* Серый фон */
+            width: auto;
+            padding: 12px 25px;
+            margin-top: 20px;
+        }
+
+        .back-btn:hover {
+            background-color: #218838; /* Тёмно-серый при наведении */
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Register</h1>
+
+    <div class="container">
+        <h2>Создайте аккаунт</h2>
+        {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <div class="message">
+                        {% for message in messages %}
+                            <p>{{ message }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+        <form action="/registration" method="POST">
+            {{ csrf_token() }}
+            <input type="text" name="name" placeholder="Username (8-12 characters)" required>
+            <input type="password" name="password" placeholder="Password (8-12 characters)" required>
+            <input type="date" name="birth_date" placeholder="Birth Date" required>
+
+            <select name="gender" required>
+                <option value="" disabled selected>Choose gender</option>
+                <option value="man">Man</option>
+                <option value="woman">Woman</option>
+                <option value="other">Other</option>
+            </select>
+
+            <input type="text" name="full_name" placeholder="Full Name (max 24 characters)" required>
+            <button type="submit" class="btn">Register</button>
+        </form>
+
+        <!-- Кнопка назад -->
+        <a href="{{ url_for('user_controller.index') }}" class="btn back-btn">Назад на главную</a>
+    </div>
+
+</body>
+</html>
