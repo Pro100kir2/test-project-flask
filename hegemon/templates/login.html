@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход - Hegemon</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Trajan+Pro:wght@400&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar">
+            <div class="logo">
+                <h1>Hegemon</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#">Главная</a></li>
+                <li><a href="#">Проекты</a></li>
+                <li><a href="#">Сервисы</a></li>
+                <li><a href="#">Контакты</a></li>
+            </ul>
+        </nav>
+
+        <section class="auth-section">
+            <h2>Вход в систему</h2>
+            <form action="/login" method="POST">
+                <label for="username">Имя пользователя:</label>
+                <input type="text" id="username" name="username" required>
+
+                <label for="password">Пароль:</label>
+                <input type="password" id="password" name="password" required>
+
+                <button type="submit" class="submit-btn">Войти</button>
+            </form>
+            <p>Еще нет аккаунта? <a href="/register">Зарегистрироваться</a></p>
+        </section>
+    </div>
+</body>
+</html>
